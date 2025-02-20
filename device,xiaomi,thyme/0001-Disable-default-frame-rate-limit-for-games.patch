@@ -1,0 +1,23 @@
+From 221d41db26527e380a2975f211997e691b088dc7 Mon Sep 17 00:00:00 2001
+From: Hecheng Yu <kde-yyds@qq.com>
+Date: Thu, 20 Feb 2025 20:50:41 +0800
+Subject: [PATCH 1/3] Disable default frame rate limit for games
+
+---
+ vendor.prop | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/vendor.prop b/vendor.prop
+index bdd7300..f4aa77f 100644
+--- a/vendor.prop
++++ b/vendor.prop
+@@ -68,3 +68,6 @@ vendor.hbm.enable=true
+ 
+ # TouchFeature
+ ro.vendor.touchfeature.type=143
++
++# Disable default frame rate limit for games
++debug.graphics.game_default_frame_rate.disabled=1
+-- 
+2.39.2
+

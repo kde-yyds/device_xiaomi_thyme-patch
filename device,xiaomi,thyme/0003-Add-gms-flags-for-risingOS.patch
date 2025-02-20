@@ -1,0 +1,29 @@
+From 4c10882f9fe3236290e33050bcf9656a86d618c8 Mon Sep 17 00:00:00 2001
+From: Hecheng Yu <kde-yyds@qq.com>
+Date: Thu, 20 Feb 2025 20:53:01 +0800
+Subject: [PATCH 3/3] Add gms flags for risingOS
+
+---
+ lineage_thyme.mk | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/lineage_thyme.mk b/lineage_thyme.mk
+index b6ae6b1..089244f 100644
+--- a/lineage_thyme.mk
++++ b/lineage_thyme.mk
+@@ -20,6 +20,12 @@ PRODUCT_BRAND := Xiaomi
+ PRODUCT_MODEL := M2102J2SC
+ PRODUCT_MANUFACTURER := Xiaomi
+ 
++# GMS
++WITH_GMS := true
++TARGET_CORE_GMS_EXTRAS := true
++TARGET_ENABLE_BLUR := true
++PRODUCT_NO_CAMERA := false
++TARGET_INCLUDE_GOOGLE_DIALER := true
+ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+ 
+ PRODUCT_BUILD_PROP_OVERRIDES += \
+-- 
+2.39.2
+

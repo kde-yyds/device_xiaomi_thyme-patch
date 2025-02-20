@@ -1,0 +1,24 @@
+From 12f8af9a798b2de3b5e33dd7ce80e704300563e7 Mon Sep 17 00:00:00 2001
+From: Hecheng Yu <kde-yyds@qq.com>
+Date: Thu, 20 Feb 2025 20:51:47 +0800
+Subject: [PATCH 2/3] Add Chipset/Maintainer properties
+
+---
+ lineage_thyme.mk | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lineage_thyme.mk b/lineage_thyme.mk
+index e8033f4..b6ae6b1 100644
+--- a/lineage_thyme.mk
++++ b/lineage_thyme.mk
+@@ -29,3 +29,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
+     DeviceProduct=thyme \
+     SystemDevice=thyme \
+     SystemName=thyme
++# RisingOS
++PRODUCT_BUILD_PROP_OVERRIDES += \
++    RisingChipset="Snapdragon 870" \
++    RisingMaintainer="kde-yyds"
+-- 
+2.39.2
+
