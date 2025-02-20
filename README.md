@@ -1,4 +1,4 @@
-# **A guide on how to build RisingOS with KernelSU for POCO X4 GT / Redmi K50i / Redmi Note 11T Pro(+) (xaga)**
+# **A guide on how to build RisingOS for Xiaomi 10S (thyme)**
 # Build manually
 ## Preparation 
 ### OS
@@ -19,30 +19,23 @@ cd risingos
 repo init -u https://github.com/RisingOS-Revived/android -b fifteen --git-lfs --depth=1
 repo sync -c --no-clone-bundle --optimized-fetch --prune --force-sync -j$(nproc --all)
 ```
-#### Device trees (Thanks to [@XagaForge](https://github.com/XagaForge))
+#### Device trees (Thanks to [@Fuutao](https://github.com/Fuutao))
 ```
-git clone --depth=1 https://github.com/XagaForge/android_device_xiaomi_xaga device/xiaomi/xaga
-git clone --depth=1 https://github.com/XagaForge/android_device_xiaomi_mt6895-common device/xiaomi/mt6895-common
-git clone --depth=1 https://github.com/XagaForge/android_kernel_xiaomi_mt6895 kernel/xiaomi/mt6895
-git clone --depth=1 https://gitlab.com/priiii1808/android_vendor_xiaomi_xaga vendor/xiaomi/xaga
-git clone --depth=1 https://github.com/XagaForge/android_vendor_xiaomi_mt6895-common vendor/xiaomi/mt6895-common
-git clone --depth=1 https://github.com/XagaForge/android_vendor_firmware vendor/firmware
-git clone --depth=1 https://github.com/xiaomi-mediatek-devs/android_hardware_xiaomi hardware/xiaomi
-git clone --depth=1 https://github.com/xiaomi-mediatek-devs/android_hardware_mediatek hardware/mediatek
-git clone --depth=1 https://github.com/xiaomi-mediatek-devs/android_device_mediatek_sepolicy_vndr device/mediatek/sepolicy/vndr
+git clone --depth=1 https://github.com/crdroidandroid/android_device_xiaomi_thyme device/xiaomi/thyme
+git clone --depth=1 https://github.com/crdroidandroid/android_device_xiaomi_sm8250-common device/xiaomi/sm8250-common --branch=15.0-thyme
+git clone --depth=1 https://github.com/crdroidandroid/android_hardware_xiaomi hardware/xiaomi
+git clone --depth=1 https://github.com/crdroidandroid/android_kernel_xiaomi_thyme kernel/xiaomi/thyme
+git clone --depth=1 https://github.com/crdroidandroid/proprietary_vendor_xiaomi_sm8250-common vendor/xiaomi/sm8250-common --branch=15.0-thyme
+git clone --depth=1 https://github.com/crdroidandroid/android_vendor_xiaomi_thyme vendor/xiaomi/thyme
 ```
 #### MIUI Camera
 ```
-git clone --depth=1 https://gitlab.com/priiii1808/proprietary_vendor_xiaomi_miuicamera-xaga.git vendor/xiaomi/miuicamera-xaga
+git clone --depth=1 https://gitlab.com/crdroidandroid/proprietary_vendor_xiaomi_miuicamera vendor/xiaomi/miuicamera-thyme --branch=15.0-thyme
 ```
 
-#### KernelSU
-```
-git clone https://github.com/kde-yyds/android_external_kernelsu external/kernelsu
-```
 #### Patches
 ```
-git clone --depth=1 https://github.com/kde-yyds/device_xiaomi_xaga-patch/
+git clone --depth=1 https://github.com/kde-yyds/device_xiaomi_thyme-patch/
 ```
 ### Fix errors for Arch Linux (Thanks to [@Finish0314](https://github.com/finish0314) for this workaround)
 When building android kernel on Arch Linux, `libyaml` cannot be found and configured correctly. Copy the header and lib to `prebuilts/kernel-build-tools` manually to fix it.
@@ -53,13 +46,13 @@ cp -r /lib64/libyaml-0.so.2.0.9 prebuilts/kernel-build-tools/linux-x86/lib64/lib
 
 ### Apply patches
 ```
-python3 device_xiaomi_xaga-patch/apply-patches.py
+python3 device_xiaomi_thyme-patch/apply-patches.py
 ```
 ### Build RisingOS
 Switch to bash if you are not on other shell.
 ```
 . build/envsetup.sh
-riseup xaga userdebug
+riseup thyme userdebug
 rise b
 ```
 Then wait for hours until the build progress complete.
